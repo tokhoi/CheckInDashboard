@@ -1,0 +1,205 @@
+/* Dashboard.css */
+
+/* --- Layout Chung --- */
+.dashboard-container {
+  padding: 10px;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+/* --- Header Area --- */
+.header-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.dashboard-title {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+  font-weight: bold;
+}
+
+.controls-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.date-input {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* --- Buttons --- */
+.btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: opacity 0.2s;
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-success {
+  background-color: #28a745;
+}
+
+/* --- Tabs --- */
+.tab-container {
+  display: flex;
+  gap: 5px;
+  background: #f8f9fa;
+  padding: 5px;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+  background-color: transparent;
+  color: #666;
+}
+
+.tab-btn.active {
+  background-color: #fff;
+  color: #007bff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Chart Section --- */
+.chart-header {
+  margin-top: 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.chart-scroll-container {
+  width: 100%;
+}
+
+/* --- Grid Details --- */
+.section-title {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+/* --- School Card --- */
+.school-card {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 0; /* Override class card */
+  border-top: 4px solid transparent; /* Sẽ được set màu động */
+}
+
+.school-card-header {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.school-name {
+  margin: 0;
+  font-size: 14px;
+  flex: 1;
+  line-height: 1.4;
+  padding-right: 5px;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 4px;
+  height: fit-content;
+  white-space: nowrap;
+}
+
+/* Màu Badge trạng thái */
+.badge-high {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.badge-medium {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.badge-low {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  padding: 20px;
+  background: #fff5f5;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.stats-container {
+  display: flex;
+  align-items: center;
+}
+
+.stats-info {
+  flex: 1;
+  padding-left: 10px;
+  font-size: 13px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.text-gray {
+  color: #666;
+}
+.mb-4 {
+  margin-bottom: 4px;
+}
