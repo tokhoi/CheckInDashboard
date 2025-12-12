@@ -44,7 +44,6 @@ const MainChart: React.FC<Props> = ({ data, isMobile, activeTab }) => {
           ? "Sáng"
           : "Chiều"}
       </h3>
-
       <div
         className="chart-scroll-container"
         style={{

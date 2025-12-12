@@ -8,7 +8,7 @@ import SchoolCard from "./SchoolCard";
 import "./Dashboard.css";
 
 const Dashboard: React.FC = () => {
-  // ==================== QUẢN LÝ TRẠNG THÁI ====================
+  // Quản lý trạng thái
   const [isMobile, setIsMobile] = useState(window.innerWidth < 780);
   const [activeTab, setActiveTab] = useState<TabType>("general");
   const [selectedDate, setSelectedDate] = useState<string>(() => {
@@ -18,14 +18,14 @@ const Dashboard: React.FC = () => {
   const [data, setData] = useState<AttendanceStats[]>([]);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  // ==================== HIỆU ỨNG ====================
+  // Xử lý hiệu ứng khi thay đổi kích thước màn hình
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 780);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // ==================== LẤY DỮ LIỆU ====================
+  // Hàm lấy dữ liệu từ API
   const fetchSchoolData = async (
     school: DuLieuDiemDanh,
     dateISO: string
@@ -38,7 +38,9 @@ const Dashboard: React.FC = () => {
         ngay: formattedDate,
       });
       const result = response.data;
+
       if (!result.success || !result.stringdata) throw new Error("No data");
+
       const inner = result.stringdata;
 
       const tongSiSo = inner.tongsiso || inner.TongSiSo || 0;
@@ -49,6 +51,10 @@ const Dashboard: React.FC = () => {
       const tongSiSoSang = inner.tongsisosang || inner.TongSiSoSang || tongSiSo;
       const tongSiSoChieu =
         inner.tongsisochieu || inner.TongSiSoChieu || tongSiSo;
+
+      const gvCoMat = inner.gv_comat || 0;
+      const gvTong = inner.gv_tong || 0;
+      const gvVang = inner.gv_vang || 0;
 
       return {
         schoolId: school.id,
@@ -64,6 +70,9 @@ const Dashboard: React.FC = () => {
           tongSiSo,
           tongSiSoSang,
           tongSiSoChieu,
+          gvCoMat,
+          gvTong,
+          gvVang,
         },
         loading: false,
         error: false,
@@ -83,6 +92,9 @@ const Dashboard: React.FC = () => {
           tongSiSo: 0,
           tongSiSoSang: 0,
           tongSiSoChieu: 0,
+          gvCoMat: 0,
+          gvTong: 0,
+          gvVang: 0,
         },
         loading: false,
         error: true,
@@ -90,18 +102,14 @@ const Dashboard: React.FC = () => {
     }
   };
 
+  // Hàm tải toàn bộ dữ liệu
   const loadAllData = async () => {
     setIsRefreshing(true);
     const promises = DuLieuDiemDanhList.map((s) =>
       fetchSchoolData(s, selectedDate)
     );
     const results = await Promise.all(promises);
-    const sorted = results.sort((a, b) => {
-      const rateA = a.raw.tongSiSo > 0 ? a.raw.coMatTong / a.raw.tongSiSo : 0;
-      const rateB = b.raw.tongSiSo > 0 ? b.raw.coMatTong / b.raw.tongSiSo : 0;
-      return rateB - rateA;
-    });
-    setData(sorted);
+    setData(results);
     setIsRefreshing(false);
   };
 
@@ -109,36 +117,54 @@ const Dashboard: React.FC = () => {
     loadAllData();
   }, [selectedDate]);
 
-  // ==================== XỬ LÝ DỮ LIỆU ====================
-  const displayData = data.map((item) => {
-    let da = 0;
-    let tong = 0;
-    if (activeTab === "general") {
-      da = item.raw.coMatTong;
-      tong = item.raw.tongSiSo;
-    } else if (activeTab === "morning") {
-      da = item.raw.coMatSang;
-      tong = item.raw.tongSiSoSang;
-    } else {
-      da = item.raw.coMatChieu;
-      tong = item.raw.tongSiSoChieu;
-    }
-    const chua = Math.max(0, tong - da);
-    return {
-      ...item,
-      daDiemDanh: da,
-      chuaDiemDanh: chua,
-      tongSo: tong,
-    };
-  });
+  // Xử lý dữ liệu hiển thị
+  const displayData = data
+    .map((item) => {
+      let da = 0;
+      let tong = 0;
 
-  // ==================== CHỨC NĂNG XUẤT ====================
+      if (activeTab === "general") {
+        da = item.raw.coMatTong;
+        tong = item.raw.tongSiSo;
+      } else if (activeTab === "morning") {
+        da = item.raw.coMatSang;
+        tong = item.raw.tongSiSoSang;
+      } else if (activeTab === "afternoon") {
+        da = item.raw.coMatChieu;
+        tong = item.raw.tongSiSoChieu;
+      } else {
+        da = item.raw.gvCoMat;
+        tong = item.raw.gvTong;
+      }
+
+      const chua = Math.max(0, tong - da);
+
+      return {
+        ...item,
+        daDiemDanh: da,
+        chuaDiemDanh: chua,
+        tongSo: tong,
+      };
+    })
+    .filter((item) => {
+      if (activeTab === "teachers" && item.tongSo === 0) {
+        return false;
+      }
+      return true;
+    })
+    .sort((a, b) => {
+      const rateA = a.tongSo > 0 ? a.daDiemDanh / a.tongSo : 0;
+      const rateB = b.tongSo > 0 ? b.daDiemDanh / b.tongSo : 0;
+      return rateB - rateA;
+    });
+
+  // Hàm xuất dữ liệu ra file Excel
   const handleExportExcel = () => {
     const excelData = displayData.map((item, index) => ({
       STT: index + 1,
       "Mã Trường": item.schoolId,
       "Tên Trường": item.schoolName,
-      "Sĩ Số (Theo buổi)": item.tongSo,
+      "Sĩ Số": item.tongSo,
       "Đã Điểm Danh": item.daDiemDanh,
       Vắng: item.chuaDiemDanh,
       "Tỷ lệ":
@@ -162,10 +188,9 @@ const Dashboard: React.FC = () => {
     XLSX.writeFile(workbook, `BaoCao_${activeTab}_${selectedDate}.xlsx`);
   };
 
-  // ==================== HIỂN THỊ ====================
+  // Hiển thị giao diện
   return (
     <div className="dashboard-container">
-      {/* TIÊU ĐỀ VÀ ĐIỀU KHIỂN */}
       <div className="card">
         <div className="header-row">
           <h1 className="dashboard-title">DASHBOARD ĐIỂM DANH</h1>
@@ -189,12 +214,24 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
 
-        {/* ĐIỀU HƯỚNG TAB */}
         <div className="tab-container">
           {[
-            { id: "general", label: "Tổng quan (Ngày)" },
-            { id: "morning", label: "Buổi Sáng" },
-            { id: "afternoon", label: "Buổi Chiều" },
+            {
+              id: "general",
+              label: "Tổng quan HS",
+            },
+            {
+              id: "morning",
+              label: "HS Sáng",
+            },
+            {
+              id: "afternoon",
+              label: "HS Chiều",
+            },
+            {
+              id: "teachers",
+              label: "Giáo Viên",
+            },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -207,11 +244,9 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* PHẦN BIỂU ĐỒ */}
       <MainChart data={displayData} isMobile={isMobile} activeTab={activeTab} />
 
-      {/* PHẦN CHI TIẾT */}
-      <h3 className="section-title">Chi Tiết ({data.length})</h3>
+      <h3 className="section-title">Chi Tiết ({displayData.length})</h3>
       <div className="grid-container">
         {displayData.map((item) => (
           <SchoolCard key={item.schoolId} item={item} activeTab={activeTab} />

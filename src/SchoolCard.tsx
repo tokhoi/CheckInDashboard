@@ -1,7 +1,7 @@
 import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { AttendanceStats, COLORS, TabType } from "./types";
-import "./Dashboard.css"; // Import CSS
+import "./Dashboard.css";
 
 interface Props {
   item: AttendanceStats;
@@ -15,7 +15,7 @@ const SchoolCard: React.FC<Props> = ({ item, activeTab }) => {
   const percentText = item.tongSo > 0 ? percentNum.toFixed(2) : "0.00";
 
   let badgeClass = "badge-low";
-  if (percentNum >= 80) badgeClass = "badge-high";
+  if (percentNum >= 90) badgeClass = "badge-high";
   else if (percentNum >= 50) badgeClass = "badge-medium";
 
   return (
