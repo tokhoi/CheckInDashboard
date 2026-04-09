@@ -1,0 +1,146 @@
+{
+  "TITKUL": {
+    "QuyTacGuiThongBao": {
+      "isGuiThongBaoDiemDanh": 1,
+      "isGuiZNS": 1,
+      "isGuiFCM": 0,
+      "isGuiSang": 1,
+      "isGuiChieu": 1,
+      "isGuiDiemDanhHSChoPH": 1,
+      "isGuiDiemDanhHSChoGVCN": 1,
+      "isGuiDiemDanhGVChoGV": 1,
+      "isGuiDiemDanhGVChoBGH": 1
+    },
+    "QuyTacCamera":{
+      "isTuDongPullDiemDanh": 1
+    }
+  },
+  "79000749": {
+    "QuyTacGuiThongBao": {
+      "isGuiThongBaoDiemDanh": 1,
+      "isGuiZNS": 1,
+      "isGuiFCM": 0,
+      "isGuiSang": 1,
+      "isGuiChieu": 1,
+      "isGuiDiemDanhHSChoPH": 1,
+      "isGuiDiemDanhHSChoGVCN": 1,
+      "isGuiDiemDanhGVChoGV": 1,
+      "isGuiDiemDanhGVChoBGH": 1
+    },
+    "QuyTacCamera":{
+      "isTuDongPullDiemDanh": 1
+    }
+  },
+  "79777513": {
+    "QuyTacGuiThongBao": {
+      "isGuiThongBaoDiemDanh": 1,
+      "isGuiZNS": 1,
+      "isGuiFCM": 0,
+      "isGuiSang": 1,
+      "isGuiChieu": 1,
+      "isGuiDiemDanhHSChoPH": 1,
+      "isGuiDiemDanhHSChoGVCN": 0,
+      "isGuiDiemDanhGVChoGV": 1,
+      "isGuiDiemDanhGVChoBGH": 0
+    },
+    "QuyTacCamera":{
+      "isTuDongPullDiemDanh": 1
+    }   
+  },
+  "79785515": {
+    "QuyTacDiemDanh":{
+      "isDiemDanhTheoBuoi": 1,
+      "isTuDongPullDiemDanh": 0
+    },
+    "QuyTacGuiThongBao": {
+      "isGuiThongBaoDiemDanh": 0,
+      "isGuiZNS": 1,
+      "isGuiFCM": 0,
+      "isGuiSang": 1,
+      "isGuiChieu": 1,
+      "isGuiDiemDanhHSChoPH": 1,
+      "isGuiDiemDanhHSChoPH_Tre": 1,
+      "isGuiDiemDanhHSChoPH_Vang": 1,
+      "isGuiDiemDanhHSChoGVCN": 0,
+      "isGuiDiemDanhHSChoGVCN_Tre": 1,
+      "isGuiDiemDanhHSChoGVCN_Vang": 1,
+      "isGuiDiemDanhHSChoGiamThi": 0,
+      "isGuiDiemDanhHSChoGiamThi_Tre": 0,
+      "isGuiDiemDanhHSChoGiamThi_Vang": 0,
+      "isGuiDiemDanhGVChoGV": 1,
+      "isGuiDiemDanhGVChoBGH": 0
+    }   
+  },
+  "79777308": {
+    "QuyTacDiemDanh":{
+      "isDiemDanhTheoBuoi": 0,
+      "isTuDongPullDiemDanh": 0
+    },
+    "QuyTacGuiThongBao": {
+      "isGuiThongBaoDiemDanh": 0,
+      "isGuiZNS": 1,
+      "isGuiFCM": 0,
+      "isGuiSang": 1,
+      "isGuiChieu": 1,
+      "isGuiDiemDanhHSChoPH": 1,
+      "isGuiDiemDanhHSChoPH_Tre": 1,
+      "isGuiDiemDanhHSChoPH_Vang": 1,
+      "isGuiDiemDanhHSChoGVCN": 0,
+      "isGuiDiemDanhHSChoGVCN_Tre": 1,
+      "isGuiDiemDanhHSChoGVCN_Vang": 1,
+      "isGuiDiemDanhHSChoGiamThi": 0,
+      "isGuiDiemDanhHSChoGiamThi_Tre": 0,
+      "isGuiDiemDanhHSChoGiamThi_Vang": 0,
+      "isGuiDiemDanhGVChoGV": 1,
+      "isGuiDiemDanhGVChoBGH": 0
+    }   
+  },
+  "79767502": {
+    "QuyTacDiemDanh":{
+      "isDiemDanhTheoBuoi": 1,
+      "isTuDongPullDiemDanh": 0
+    },
+    "QuyTacGuiThongBao": {
+      "isGuiThongBaoDiemDanh": 1,
+      "isGuiZNS": 1,
+      "isGuiFCM": 0,
+      "isGuiSang": 1,
+      "isGuiChieu": 1,
+      "isGuiDiemDanhHSChoPH": 1,
+      "isGuiDiemDanhHSChoPH_Tre": 1,
+      "isGuiDiemDanhHSChoPH_Vang": 1,
+      "isGuiDiemDanhHSChoGVCN": 0,
+      "isGuiDiemDanhHSChoGVCN_Tre": 1,
+      "isGuiDiemDanhHSChoGVCN_Vang": 1,
+      "isGuiDiemDanhHSChoGiamThi": 0,
+      "isGuiDiemDanhHSChoGiamThi_Tre": 0,
+      "isGuiDiemDanhHSChoGiamThi_Vang": 0,
+      "isGuiDiemDanhGVChoGV": 1,
+      "isGuiDiemDanhGVChoBGH": 0
+    }   
+  },
+  "79777406": {
+    "QuyTacDiemDanh":{
+      "isDiemDanhTheoBuoi": 1,
+      "isTuDongPullDiemDanh": 0
+    },
+    "QuyTacGuiThongBao": {
+      "isGuiThongBaoDiemDanh": 0,
+      "isGuiZNS": 1,
+      "isGuiFCM": 0,
+      "isGuiSang": 1,
+      "isGuiChieu": 1,
+      "isGuiDiemDanhHSChoPH": 1,
+      "isGuiDiemDanhHSChoPH_Tre": 1,
+      "isGuiDiemDanhHSChoPH_Vang": 1,
+      "isGuiDiemDanhHSChoGVCN": 0,
+      "isGuiDiemDanhHSChoGVCN_Tre": 1,
+      "isGuiDiemDanhHSChoGVCN_Vang": 1,
+      "isGuiDiemDanhHSChoGiamThi": 0,
+      "isGuiDiemDanhHSChoGiamThi_Tre": 0,
+      "isGuiDiemDanhHSChoGiamThi_Vang": 0,
+      "isGuiDiemDanhGVChoGV": 1,
+      "isGuiDiemDanhGVChoBGH": 0
+    }   
+  }
+}
